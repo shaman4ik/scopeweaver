@@ -314,26 +314,26 @@ function JudgeCard() {
           <CardContent className="p-4">
             <div className="mb-3 flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium">审批 Token 消耗</p>
+                <p className="text-sm font-medium">Approval Token Usage</p>
                 <p className="text-xs text-muted-foreground">
-                  模型兜底审批累计用量,单独计量(worker=judge),不与各模型配置的统计混在一起
+                  Cumulative usage for LLM fallback approvals, metered separately (worker=judge), distinct from per-model stats.
                 </p>
               </div>
               <Button variant="ghost" size="sm" className="h-7 text-xs" onClick={loadUsage}>
-                刷新
+                Refresh
               </Button>
             </div>
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-5">
-              <JudgeStat label="审批调用" value={usage.calls.toLocaleString()} />
-              <JudgeStat label="输入 Token" value={fmtTokens(usage.input_tokens)} />
-              <JudgeStat label="输出 Token" value={fmtTokens(usage.output_tokens)} />
-              <JudgeStat label="缓存读" value={fmtTokens(usage.cache_read_tokens)} />
-              <JudgeStat label="缓存写" value={fmtTokens(usage.cache_write_tokens)} />
+              <JudgeStat label="Approval Calls" value={usage.calls.toLocaleString()} />
+              <JudgeStat label="Input Tokens" value={fmtTokens(usage.input_tokens)} />
+              <JudgeStat label="Output Tokens" value={fmtTokens(usage.output_tokens)} />
+              <JudgeStat label="Cache Read" value={fmtTokens(usage.cache_read_tokens)} />
+              <JudgeStat label="Cache Write" value={fmtTokens(usage.cache_write_tokens)} />
             </div>
             {usage.daily.length > 0 && (
               <div className="mt-4">
                 <p className="mb-2 text-[10px] uppercase tracking-wider text-muted-foreground">
-                  近 30 天每日消耗(输入 + 输出)
+                  Daily usage over the last 30 days (Input + Output)
                 </p>
                 <JudgeSparkbars daily={usage.daily} />
               </div>
